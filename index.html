@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#05070d" />
+  <title>Gesture AR // Hero Shift</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section id="intro" class="intro">
+      <div class="brand-mark">AR//01</div>
+      <p class="eyebrow">GESTURE HERO SHIFT</p>
+      <h1>抬手，<br><span>切换你的机甲人格。</span></h1>
+      <p class="intro-copy">无需安装 App。打开前置相机，用手势切换实时 AR 面具。</p>
+      <button id="startBtn" class="primary-btn">开始体验 <span>→</span></button>
+      <p class="privacy-note">相机画面仅在本机浏览器中处理，不上传服务器。</p>
+    </section>
+
+    <section id="stage" class="stage is-hidden" aria-live="polite">
+      <video id="camera" autoplay playsinline muted></video>
+      <canvas id="overlay"></canvas>
+      <div class="scanline"></div>
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="mini-label">ACTIVE PROFILE</p>
+          <strong id="maskName">HUMAN / CLEAR</strong>
+        </div>
+        <div id="visionBadge" class="status-pill">LOADING AI</div>
+      </header>
+
+      <div id="centerStatus" class="center-status">
+        <span class="reticle"></span>
+        <p id="statusText">正在加载视觉模型…</p>
+      </div>
+
+      <div id="gestureFlash" class="gesture-flash" aria-hidden="true">
+        <span id="gestureFlashTitle">GESTURE DETECTED</span>
+        <strong id="gestureFlashSubtitle">ARMOR ONLINE</strong>
+      </div>
+
+      <aside id="gestureSheet" class="gesture-sheet">
+        <button id="gestureToggle" class="sheet-handle" aria-expanded="true">
+          <span>手势提示</span><span>⌄</span>
+        </button>
+        <div class="gesture-grid">
+          <div><b>✊</b><span>钢铁机甲</span></div>
+          <div><b>✌️</b><span>下一个</span></div>
+          <div><b>🤟</b><span>赛博骑士</span></div>
+          <div><b>🖐</b><span>恢复真人</span></div>
+          <div><b>👈</b><span>上一个</span></div>
+          <div><b>👉</b><span>下一个</span></div>
+        </div>
+      </aside>
+
+      <nav class="dock" aria-label="AR controls">
+        <button id="switchCameraBtn" class="dock-btn" title="切换摄像头">↻<span>镜头</span></button>
+        <button id="soundBtn" class="dock-btn" title="音效">◖))<span>音效</span></button>
+        <button id="helpBtn" class="dock-btn active" title="手势提示">✋<span>手势</span></button>
+      </nav>
+    </section>
+  </main>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
